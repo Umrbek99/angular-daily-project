@@ -1,0 +1,8 @@
+Observables: 
+    1) handle data
+    2) handle error
+    3) handle complition
+
+Important: 
+    1) Observable lar rxjs dan import qilinadi  {}
+

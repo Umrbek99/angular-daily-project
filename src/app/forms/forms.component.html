@@ -1,0 +1,67 @@
+<!-- <h1 class="text-center mt-5">Forms works!</h1>
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div ngModelGroup="userData">
+
+
+        <div class="form-group">
+            <label for="user_name">Username</label>
+            <input 
+            type="text" 
+            id="user_name"
+            ngModel
+            name="username"
+            required
+            class="form-control">
+        </div>
+        <button type="button" class="btn btn-info" (click)="suggestedUserName()">Suggest a username</button>
+        <div class="form-group">
+            <label for="user_email">Email</label>
+            <input 
+            type="email" 
+            name="email" 
+            id="user_email"
+            ngModel
+            name="email"
+            required
+            email
+            #email="ngModel"
+            class="form-control">
+            <span *ngIf="!email.valid && email.touched ">Please enter right email</span>
+        </div> 
+ 
+
+    </div>
+    <div *ngFor="let gender of genders">
+        <label for="">
+            <input 
+            type="radio" 
+            ngModel 
+            name="gender" 
+            [value]="gender" 
+            required
+            class="form-control">
+            {{gender}}
+        </label>
+    </div>
+    <div class="form-group">
+            <label for="secret">Secret question</label>
+            <select 
+            name="secret" 
+            [ngModel]="defaultQuestion"
+            id="user_secret" 
+            class="form-control">   
+                <option value="pet">Your first pat?</option>
+                <option value="teacher">Your first teacher?</option>
+            </select>
+            <button class="btn btn-primary mt-2" [disabled]="!f.valid" type="submit">Submit</button>
+    </div>
+</form>
+<hr>
+
+<div *ngIf="submitted">
+    <h5>Your data</h5>
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.gender}}</p>
+    <p>{{user.secret}}</p>
+</div> -->
