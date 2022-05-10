@@ -1,0 +1,18 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Using pipes</h1><hr>
+            <h2>Hi, {{title | uppercase}}</h2>
+            <h3>{{company | shorten:5}}</h3>
+            <small>Date : {{created | date}}</small><br><br>
+            <h1>App status : {{appStatus | async}}</h1>
+            <label for="filterPipe">Filter projects = </label>
+            <input type="text" id="filterPipe" [(ngModel)]="filteredStatus"><hr>
+            <div *ngFor="let project of projects | filter:filteredStatus:'status'">
+                <h4>{{project.name}}</h4>
+                <p>{{project.status}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

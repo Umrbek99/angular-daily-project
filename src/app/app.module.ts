@@ -3,24 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { FormsComponent } from './forms/forms.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ShortenPipe } from './pipes/pipes/shorten.pipe';
+import { FilterPipe } from './pipes/pipes/filter.pipe';
+import { HttpRequestsComponent } from './http-requests/http-requests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent,
     FormsComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe,
+    HttpRequestsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
