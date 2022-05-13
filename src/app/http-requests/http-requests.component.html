@@ -1,1 +1,43 @@
-<p>http-requests works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mt-4">Http requests</h1>
+            <form #f="ngForm" (ngSubmit)="onCreatePost(f.value)" >
+                <div >
+                    <div class="form-group">
+                        <label for="user_name">Username</label>
+                        <input 
+                        type="text" 
+                        id="user_name"
+                        ngModel
+                        name="title"
+                        required
+                        class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" ngModel name="content" id="content" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn btn-outline-primary mb-2" type="submit">Add post</button>
+                </div>
+            </form>
+            <button class="btn btn-outline-info" (click)="onFetchPosts()">Fetch data</button> | 
+            <button class="btn btn-outline-danger" (click)="deleteAllposts()">Delete all</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <ul class="col-12 mt-2 list-group" *ngFor="let post of loadedPosts">
+            <li class="list-group-item">
+                <h3>{{post.title}}</h3>
+                <p>{{post.content}}</p>
+            </li>
+            
+        </ul>
+        <div class="alert alert-warning mt-2 ml-2" *ngIf="this.loading && !error">Loading...</div>
+        <div class="alert alert-danger mt-2 ml-2" *ngIf="error">{{error}}</div>
+    </div>
+</div>
