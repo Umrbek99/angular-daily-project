@@ -12,6 +12,7 @@ import { FilterPipe } from './pipes/pipes/filter.pipe';
 import { HttpRequestsComponent } from './http-requests/http-requests.component';
 import {AuthInterceptorService} from './http-requests/auth-interceptor/auth-interceptor.service'
 import { LogginInterCeptorService } from './http-requests/auth-interceptor/Loggin-Interceptor.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LogginInterCeptorService } from './http-requests/auth-interceptor/Loggi
     PipesComponent,
     ShortenPipe,
     FilterPipe,
-    HttpRequestsComponent
+    HttpRequestsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -31,16 +33,16 @@ import { LogginInterCeptorService } from './http-requests/auth-interceptor/Loggi
     HttpClientModule
   ],
   providers: [
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptorService,
-      multi:true
-    },
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:LogginInterCeptorService,
-      multi:true
-    },
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:AuthInterceptorService,
+    //   multi:true
+    // },
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:LogginInterCeptorService,
+    //   multi:true
+    // },
   ],
   bootstrap: [AppComponent]
 })

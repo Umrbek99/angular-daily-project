@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 import { FormsComponent } from './forms/forms.component';
 import { HttpRequestsComponent } from './http-requests/http-requests.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:"http",component:HttpRequestsComponent},
   {path:"reactive-forms",component:ReactiveFormsComponent},
   {path:"pipes",component:PipesComponent},
+  {path:"auth",component:AuthComponent}
 ];
 
 @NgModule({
