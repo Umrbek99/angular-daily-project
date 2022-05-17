@@ -10,9 +10,8 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ShortenPipe } from './pipes/pipes/shorten.pipe';
 import { FilterPipe } from './pipes/pipes/filter.pipe';
 import { HttpRequestsComponent } from './http-requests/http-requests.component';
-import {AuthInterceptorService} from './http-requests/auth-interceptor/auth-interceptor.service'
-import { LogginInterCeptorService } from './http-requests/auth-interceptor/Loggin-Interceptor.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptorService } from './auth/auth-service/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,11 +32,11 @@ import { AuthComponent } from './auth/auth.component';
     HttpClientModule
   ],
   providers: [
-    // {
-    //   provide:HTTP_INTERCEPTORS,
-    //   useClass:AuthInterceptorService,
-    //   multi:true
-    // },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptorService,
+      multi:true
+    },
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:LogginInterCeptorService,

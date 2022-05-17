@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService,AuthResponseData } from './auth-service/auth.service';
 
@@ -15,7 +16,7 @@ export class AuthComponent implements OnInit {
   onLoginMode(){
     this.isLogin = !this.isLogin;
   }
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +29,7 @@ export class AuthComponent implements OnInit {
     const email = authForm.value.email;
     const password = authForm.value.password;
     let authObs = new Observable<AuthResponseData>();
-
+ 
     if(this.isLogin){
       authObs =  this.authService.login(email,password);
     }
@@ -37,12 +38,12 @@ export class AuthComponent implements OnInit {
     }
 
     authObs.subscribe({
-      next:(r) => {this.error = null,console.log(r)},
+      next:(r) => {this.error = null,this.route.navigate(['/http'])},
       error:(e) => {this.error = e},
       complete:() => {},
     })
 
-
+ 
 
 
 

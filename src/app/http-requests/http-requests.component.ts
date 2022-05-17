@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth-service/auth.service';
 
 import { Post } from './models/PostInterface';
 import { PostsService } from './services/posts.service';
@@ -10,16 +12,28 @@ import { PostsService } from './services/posts.service';
   templateUrl: './http-requests.component.html',
   styleUrls: ['./http-requests.component.scss']
 })
-export class HttpRequestsComponent implements OnInit{
+export class HttpRequestsComponent implements OnInit,OnDestroy{
+  isAuthenticated = false;
+  private userSub!:Subscription;
   loadedPosts :any[]= [];
   loading = false;
   error = '';
 
-  constructor(private http: HttpClient,private postsService:PostsService) { }
+  constructor(private http: HttpClient,private postsService:PostsService,private auth:AuthService) { }
 
   ngOnInit(): void {
-    this. fetchPosts();
+    // this. fetchPosts();
     this.postsService.error.subscribe(error => this.error = error);
+    this.userSub =  this.auth.user.subscribe(
+      {
+        next:(n) => {this.isAuthenticated = !n ? false : true},
+        error:(e) => {},
+        complete:() =>{}  
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
   onFetchPosts(){
@@ -51,7 +65,6 @@ export class HttpRequestsComponent implements OnInit{
 
 
 }
-
 
 
 

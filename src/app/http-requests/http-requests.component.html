@@ -2,10 +2,11 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center mt-4">Http requests</h1>
-            <form #f="ngForm" (ngSubmit)="onCreatePost(f.value)" >
+            <a class="btn btn-danger" *ngIf="isAuthenticated">Logout</a>
+            <form #f="ngForm" (ngSubmit)="onCreatePost(f.value)" *ngIf="isAuthenticated">
                 <div >
                     <div class="form-group">
-                        <label for="user_name">Username</label>
+                        <label for="user_name">Username</label> 
                         <input 
                         type="text" 
                         id="user_name"
