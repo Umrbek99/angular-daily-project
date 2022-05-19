@@ -14,7 +14,6 @@ export class PostsService{
     error = new Subject<string>();
     
     createAndStorePost(postData : Post){
-
         this.http
         .post("https://backend-angular-e99ac-default-rtdb.firebaseio.com/posts.json",postData
         )
@@ -36,9 +35,6 @@ export class PostsService{
             return postArray;
         }));
     }
-
-
-
 
     deletePost(){
         return this.http.delete("https://backend-angular-e99ac-default-rtdb.firebaseio.com/posts.json");

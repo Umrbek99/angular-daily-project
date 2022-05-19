@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth-service/auth.service';
 
@@ -19,10 +20,12 @@ export class HttpRequestsComponent implements OnInit,OnDestroy{
   loading = false;
   error = '';
 
-  constructor(private http: HttpClient,private postsService:PostsService,private auth:AuthService) { }
+  constructor(private http: HttpClient,private postsService:PostsService,private auth:AuthService){
+
+  }
 
   ngOnInit(): void {
-    // this. fetchPosts();
+    this. fetchPosts(); 
     this.postsService.error.subscribe(error => this.error = error);
     this.userSub =  this.auth.user.subscribe(
       {
@@ -43,6 +46,11 @@ export class HttpRequestsComponent implements OnInit,OnDestroy{
   onCreatePost(postData:Post){
     this.postsService.createAndStorePost(postData);
   }
+
+  onLogout(){
+    this.auth.logout();
+  }
+
 
   fetchPosts(){
     this.loading = true;
